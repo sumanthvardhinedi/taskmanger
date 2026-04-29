@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team Task Manager</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main class="layout">
+    <section id="authView" class="auth-view">
+        <div>
+            <h1>Team Task Manager</h1>
+            <p>Manage projects, members, tasks, and progress from one workspace.</p>
+        </div>
+        <form id="authForm" class="panel">
+            <h2 id="authTitle">Sign in</h2>
+            <label id="nameField" class="hidden">Name<input id="name" autocomplete="name"></label>
+            <label>Email<input id="email" type="email" autocomplete="email" required></label>
+            <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
+            <button type="submit" id="authSubmit">Sign in</button>
+            <button type="button" id="toggleAuth" class="ghost">Create an account</button>
+        </form>
+    </section>
+
+    <section id="appView" class="app-view hidden">
+        <aside>
+            <div class="brand">
+                <strong>Task Manager</strong>
+                <span id="currentUser"></span>
+            </div>
+            <form id="projectForm" class="stack">
+                <input id="projectName" placeholder="New project name" required>
+                <textarea id="projectDescription" placeholder="Description"></textarea>
+                <button type="submit">Create project</button>
+            </form>
+            <div id="projects" class="nav-list"></div>
+            <button id="logout" class="ghost">Logout</button>
+        </aside>
+
+        <section class="workspace">
+            <header>
+                <div>
+                    <h1 id="projectTitle">Select a project</h1>
+                    <p id="projectDescriptionText"></p>
+                </div>
+            </header>
+
+            <div id="dashboard" class="metrics"></div>
+
+            <section id="memberPanel" class="panel hidden">
+                <h2>Members</h2>
+                <form id="memberForm" class="inline-form">
+                    <input id="memberEmail" type="email" placeholder="Member email" required>
+                    <select id="memberRole">
+                        <option value="MEMBER">Member</option>
+                        <option value="ADMIN">Admin</option>
+                    </select>
+                    <button type="submit">Add</button>
+                </form>
+                <div id="members" class="member-list"></div>
+            </section>
+
+            <section id="taskPanel" class="panel hidden">
+                <h2>Tasks</h2>
+                <form id="taskForm" class="task-form">
+                    <input id="taskTitle" placeholder="Task title" required>
+                    <textarea id="taskDescription" placeholder="Description"></textarea>
+                    <input id="taskDueDate" type="date">
+                    <select id="taskPriority">
+                        <option>LOW</option>
+                        <option selected>MEDIUM</option>
+                        <option>HIGH</option>
+                    </select>
+                    <select id="taskAssignee"></select>
+                    <button type="submit">Save task</button>
+                </form>
+                <div id="tasks" class="task-list"></div>
+            </section>
+        </section>
+    </section>
+    <div id="toast" class="toast hidden"></div>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
